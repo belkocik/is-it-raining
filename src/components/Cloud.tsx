@@ -26,6 +26,7 @@ export const Cloud: React.FC<CloudProps> = ({
 };
 
 export const BaseCloud = styled(Img)`
-  width: '457px';
-  height: '295px';
+  position: absolute;
+  width: 457px;
+  height: 295px;
 `;
