@@ -17,7 +17,7 @@ export const VideoTitleBox: React.FC = (props: Props) => {
 
 const Container = styled.div`
   position: relative;
-  /* z-index: 2; */
+  z-index: 2;
 `;
 
 const Umbrellas = styled(Img)`

@@ -9,60 +9,60 @@ export const Intro: React.FC = (props: Props) => {
   const cloudPositions = [
     {
       scale: 0.7,
-      translateX: -340,
-      translateY: -760,
+      translateX: -440,
+      translateY: -1160,
     },
     {
       scale: 1.3,
       translateX: 350,
-      translateY: -960,
+      translateY: -660,
     },
     {
       scale: 0.45,
       translateX: 50,
-      translateY: -660,
+      translateY: -1460,
     },
     {
       scale: 0.7,
-      rotate: 160,
-      translateX: 460,
-      translateY: -560,
+      rotate: 150,
+      translateX: 1000,
+      translateY: -1030,
     },
     {
       scale: 0.45,
-      translateX: -430,
-      translateY: -470,
+      translateX: -830,
+      translateY: -270,
     },
     {
       scale: 0.45,
-      translateX: -350,
-      translateY: -120,
+      translateX: -520,
+      translateY: 1020,
     },
     {
       scale: 0.7,
-      translateX: 570,
+      translateX: 770,
       translateY: 20,
     },
     {
       scale: 1.4,
       rotate: -10,
       translateX: -520,
-      translateY: 240,
+      translateY: 340,
     },
     {
       scale: 1.3,
-      translateX: 420,
+      translateX: 220,
       translateY: 680,
     },
     {
       scale: 0.45,
-      translateX: -120,
-      translateY: 540,
+      translateX: 200,
+      translateY: 740,
     },
     {
       scale: 1.3,
-      translateX: -320,
-      translateY: 880,
+      translateX: 390,
+      translateY: 300,
     },
   ];
 
@@ -72,7 +72,6 @@ export const Intro: React.FC = (props: Props) => {
       {cloudPositions.map((position, index) => (
         <Cloud key={index} {...position} />
       ))}
-      {/* <Cloud translateX={0} translateY={0} /> */}
     </VideoBackground>
   );
 };
