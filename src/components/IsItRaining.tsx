@@ -1,5 +1,5 @@
 import { Sequence, useVideoConfig } from 'remotion';
-import { Intro, Result } from '../sequences';
+import { Intro, Outro, Result } from '../sequences';
 import { WeatherState } from '../common';
 
 export const IsItRaining = () => {
@@ -11,6 +11,9 @@ export const IsItRaining = () => {
       </Sequence>
       <Sequence from={3 * fps} durationInFrames={4 * fps} name='Result'>
         <Result temperature={10} weatherState={WeatherState.Snowing} />
+      </Sequence>
+      <Sequence from={7 * fps} durationInFrames={3 * fps} name='Outro'>
+        <Outro />
       </Sequence>
     </>
   );
