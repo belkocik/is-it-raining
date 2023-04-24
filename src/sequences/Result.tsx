@@ -4,6 +4,7 @@ import {
   Typography,
   VideoBackground,
   WeatherBaseImage,
+  RainCloud,
 } from '../components';
 import { COMPOSITION_CONFIG } from '../config';
 import { useTranslations } from '../hooks';
@@ -19,6 +20,7 @@ export const Result: React.FC<ResultProps> = ({
   weatherState,
   temperature,
 }) => {
+  console.log('🚀 ~ file: Result.tsx:23 ~ weatherState:', weatherState);
   const cloudPositions = [
     {
       scale: 0.7,
@@ -37,9 +39,8 @@ export const Result: React.FC<ResultProps> = ({
     },
     {
       scale: 0.7,
-      rotate: 150,
-      translateX: -350,
-      translateY: -1030,
+      translateX: 650,
+      translateY: 930,
     },
     {
       scale: 0.45,
@@ -68,9 +69,14 @@ export const Result: React.FC<ResultProps> = ({
           <Typography.Heading>{stateName}</Typography.Heading>
         </TextContainer>
       </Container>
-      {cloudPositions.map((position, index) => (
-        <Cloud key={index} {...position} />
-      ))}
+      {cloudPositions.map((position, index) => {
+        switch (weatherState) {
+          case WeatherState.Raining:
+            return <RainCloud {...position} />;
+          default:
+            return <Cloud key={index} {...position} />;
+        }
+      })}
     </VideoBackground>
   );
 };
