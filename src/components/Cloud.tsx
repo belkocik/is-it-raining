@@ -21,14 +21,14 @@ export const Cloud: React.FC<CloudProps> = ({
   const frame = useCurrentFrame();
   const animatedTranslateX = interpolate(
     frame,
-    [0, 120],
+    [0, 120 * scale],
     [translateX, translateX - 75]
   );
 
   return (
     <Container
       style={{
-        transform: `scale(${scale}) rotate(${rotate}deg) translateX(${animatedTranslateX}px) translateY(${translateY}px) `,
+        transform: `scale(${scale}) rotate(${rotate}deg) translateX(${animatedTranslateX}px) translateY(${translateY}px)`,
       }}
     >
       <BaseCloud src={Images.Cloud} />

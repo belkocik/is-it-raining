@@ -1,26 +1,22 @@
 import { FC, Fragment } from 'react';
 import { Cloud } from './Cloud';
-import { Rain } from './Rain';
 import { Loop } from 'remotion';
-import { Thunder } from './Thunder';
+import { Snow } from './Snow';
 
-type RainCloudProps = {
+type SnowCloudProps = {
   translateX?: number;
   translateY?: number;
   scale?: number;
   rotate?: number;
-  withThunder?: boolean;
 };
 
-export const RainCloud: FC<RainCloudProps> = ({
+export const SnowCloud: FC<SnowCloudProps> = ({
   translateX = 0,
   translateY = 0,
   scale = 1,
   rotate = 0,
-  withThunder = false,
 }) => {
-  console.log('🚀 ~ file: RainCloud.tsx:22 ~ withThunder:', withThunder);
-  const rainPosition = [
+  const snowPosition = [
     {
       bottom: -60,
       left: 90,
@@ -62,12 +58,12 @@ export const RainCloud: FC<RainCloudProps> = ({
       scale={scale}
       rotate={rotate}
     >
-      <Loop durationInFrames={30} times={Infinity}>
-        {rainPosition.map((position, index) => {
+      <Loop durationInFrames={45} times={Infinity}>
+        {snowPosition.map((position, index) => {
           return (
             <Fragment key={index}>
-              <Rain bottom={position.bottom} left={position.left} opacity={1} />
-              <Rain
+              <Snow bottom={position.bottom} left={position.left} opacity={1} />
+              <Snow
                 slower
                 bottom={position.bottom - 30}
                 left={position.left - 65}
@@ -77,12 +73,6 @@ export const RainCloud: FC<RainCloudProps> = ({
           );
         })}
       </Loop>
-      {withThunder && (
-        <Loop durationInFrames={60} times={Infinity}>
-          <Thunder bottom={-150} left={200} />
-          <Thunder bottom={-120} left={70} scale={0.8} />
-        </Loop>
-      )}
     </Cloud>
   );
 };
