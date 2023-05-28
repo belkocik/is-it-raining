@@ -1,12 +1,14 @@
-import { Img } from 'remotion';
+import { Img, interpolate, useCurrentFrame } from 'remotion';
 import { Images } from '../assets/';
 import styled from 'styled-components';
+import { ReactNode } from 'react';
 
 type CloudProps = {
   translateX?: number;
   translateY?: number;
   scale?: number;
   rotate?: number;
+  children?: ReactNode;
 };
 
 export const Cloud: React.FC<CloudProps> = ({
@@ -14,19 +16,32 @@ export const Cloud: React.FC<CloudProps> = ({
   translateY = 0,
   scale = 1,
   rotate = 0,
+  children,
 }) => {
+  const frame = useCurrentFrame();
+  const animatedTranslateX = interpolate(
+    frame,
+    [0, 120 * scale],
+    [translateX, translateX - 75]
+  );
+
   return (
-    <BaseCloud
-      src={Images.Cloud}
+    <Container
       style={{
-        transform: `scale(${scale}) rotate(${rotate}deg) translateX(${translateX}px) translateY(${translateY}px) `,
+        transform: `scale(${scale}) rotate(${rotate}deg) translateX(${animatedTranslateX}px) translateY(${translateY}px)`,
       }}
-    />
+    >
+      <BaseCloud src={Images.Cloud} />
+      {children}
+    </Container>
   );
 };
 
 export const BaseCloud = styled(Img)`
-  position: absolute;
   width: 457px;
   height: 295px;
+`;
+
+const Container = styled.div`
+  position: absolute;
 `;

@@ -1,4 +1,10 @@
-import { Img } from 'remotion';
+import {
+  Img,
+  useCurrentFrame,
+  useVideoConfig,
+  spring,
+  interpolate,
+} from 'remotion';
 import styled from 'styled-components';
 
 import { Images } from '../assets';
@@ -7,9 +13,21 @@ import { TitleBox } from './TitleBox';
 type Props = {};
 
 export const VideoTitleBox: React.FC = (props: Props) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const top = interpolate(frame, [30, 55, 80], [-340, -350, -340]);
+
+  const scale = spring({
+    frame: frame - 10,
+    from: 0,
+    to: 1,
+    fps,
+  });
+
   return (
-    <Container>
-      <Umbrellas src={Images.Umbrellas} />
+    <Container style={{ transform: `scale(${scale})` }}>
+      <Umbrellas style={{ top }} src={Images.Umbrellas} />
       <TitleBox />
     </Container>
   );
